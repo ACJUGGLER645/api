@@ -1,0 +1,14 @@
+# Ignorar entorno virtual
+env/
+*.sqlite3
+
+# Ignorar archivos de caché de Python
+__pycache__/
+*.pyc
+*.swp
+
+# Ignorar archivos temporales y de configuración
+.DS_Store
+
+# Ignorar archivos específicos de Django
+/AuthProject/settings_local.py
