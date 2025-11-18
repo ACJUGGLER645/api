@@ -28,8 +28,6 @@ La configuración se enfocó en superar desafíos comunes al usar Django con Mar
 
     ```python
     # AuthProject/__init__.py
-    import pymysql
-    pymysql.install_as_MySQLdb()
     ```
     ![Configuración PyMySQL](./docs/initpy.png)
 
