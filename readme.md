@@ -31,7 +31,7 @@ La configuración se enfocó en superar desafíos comunes al usar Django con Mar
     import pymysql
     pymysql.install_as_MySQLdb()
     ```
-    ![Configuración PyMySQL](./docs/images/01-pymysql-config.png)
+    ![Configuración PyMySQL](./docs/initpy.png)
 
 * **Configuración de Conexión:** Se usa la conexión TCP/IP estándar.
 
