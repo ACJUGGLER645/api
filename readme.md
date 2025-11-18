@@ -14,25 +14,52 @@ El principal objetivo es proporcionar una interfaz simple y robusta para las cua
 
 La configuración se enfocó en superar desafíos comunes al usar Django con MariaDB/XAMPP en macOS.
 
-### 1. Incompatibilidad de Versión de la Base de Datos
+### 1. Entorno de Dependencias (`pip list`)
 
-* **Problema:** Django 5.x requería MariaDB 10.5 o posterior, mientras que el entorno utilizaba MariaDB 10.4.28.
-* **Solución:** Se realizó la **degradación de Django a la versión 4.2.11 (LTS)**, que es compatible con MariaDB 10.4.x.
+El proyecto se estabilizó utilizando las siguientes versiones clave:
 
-### 2. Conflicto de Driver Binario (PyMySQL)
+| Paquete | Versión | Propósito |
+| :--- | :--- | :--- |
+| **Django** | **4.2.11** | Versión LTS compatible con MariaDB 10.4.x. |
+| **djangorestframework** | 3.16.1 | Implementación del API REST. |
+| **PyMySQL** | **1.1.2** | Driver de conexión *de facto* para evitar errores binarios en macOS. |
+| mysqlclient | 2.2.7 | Instalado, pero su uso fue deshabilitado en favor de PyMySQL. |
 
-* **Problema:** El *driver* nativo (`mysqlclient`) generaba el error `OperationalError: 2059` debido a conflictos de librerías binarias.
-* **Solución:** Se instaló y se forzó el uso de **`PyMySQL`** (un *driver* 100% Python).
+### 2. Configuración de la Base de Datos
 
-* **Código Clave para la Solución del Driver:**
+#### A. Verificación del Servidor MariaDB
+
+Es crucial que el servicio MariaDB esté corriendo en XAMPP. La versión utilizada (`10.4.28`) fue la que forzó la degradación de Django.
+
+* **Sugerencia de Imagen:** Captura del panel de control de XAMPP mostrando MariaDB en estado *Running*.
+* **Sugerencia de Imagen:** Captura de PHPMyAdmin mostrando el número de versión (`10.4.28`).
+
+#### B. Solución al Conflicto de Driver Binario (PyMySQL)
+
+* **Problema:** El *driver* nativo (`mysqlclient`) generaba el error `OperationalError: 2059`.
+* **Solución:** Se forzó el uso de **`PyMySQL`** en el archivo de inicialización de Django.
 
     ```python
     # AuthProject/__init__.py
+    import pymysql
+    pymysql.install_as_MySQLdb()
     ```
     ![Configuración PyMySQL](./docs/initpy.png)
 
 * **Configuración de Conexión:** Se usa la conexión TCP/IP estándar.
 
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'api-db',
+            'USER': 'root',
+            'PASSWORD': '',
+            'HOST': '127.0.0.1', # Conexión TCP/IP
+            'PORT': '3306',
+        }
+    }
+    ```
     ![Configuración de la Base de Datos](./docs/databases.png)
 
 ---
@@ -43,7 +70,7 @@ La configuración se enfocó en superar desafíos comunes al usar Django con Mar
 
 Utilizamos la clase **`viewsets.ModelViewSet`** porque encapsula la lógica completa del CRUD en una única clase, lo que permite un desarrollo de API más rápido y estandarizado:
 * **Abstracción de Lógica (CRUD Automático):** DRF genera automáticamente todas las funciones necesarias para `GET`, `POST`, `PUT`, `PATCH`, y `DELETE`.
-* **Generación de Rutas:** Trabaja con **`DefaultRouter`** para generar automáticamente todas las rutas necesarias a partir de una sola línea de código.
+* **Generación de Rutas:** Trabaja con **`DefaultRouter`** (en `AuthApp/urls.py`) para generar automáticamente todas las rutas necesarias a partir de una sola línea de código.
 
 ### 2. Archivos Centrales de la API
 
