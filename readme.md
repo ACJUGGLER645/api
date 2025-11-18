@@ -48,18 +48,6 @@ Es crucial que el servicio MariaDB esté corriendo en XAMPP. La versión utiliza
 
 * **Configuración de Conexión:** Se usa la conexión TCP/IP estándar.
 
-    ```python
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'api-db',
-            'USER': 'root',
-            'PASSWORD': '',
-            'HOST': '127.0.0.1', # Conexión TCP/IP
-            'PORT': '3306',
-        }
-    }
-    ```
     ![Configuración de la Base de Datos](./docs/databases.png)
 
 ---
