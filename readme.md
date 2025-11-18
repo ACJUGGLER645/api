@@ -56,7 +56,6 @@ Utilizamos la clase **`viewsets.ModelViewSet`** porque encapsula la lógica comp
         description = models.TextField()
         price = models.DecimalField(max_digits=10, decimal_places=2)
     ```
-    ![Modelo Products](./docs/images/03-product-model.png)
 
 * **Vista (CRUD Automático):** Implementación minimalista del CRUD.
 
@@ -66,7 +65,6 @@ Utilizamos la clase **`viewsets.ModelViewSet`** porque encapsula la lógica comp
         queryset = Products.objects.all()
         serializer_class = ProductSerializer
     ```
-    ![Implementación del ViewSet](./docs/images/04-viewset-crud.png)
 
 * **Rutas Generadas:** La línea que genera todos los *endpoints*.
 
@@ -80,7 +78,6 @@ Utilizamos la clase **`viewsets.ModelViewSet`** porque encapsula la lógica comp
 
     urlpatterns = router.urls
     ```
-    ![Configuración de Rutas con Router](./docs/images/05-router-urls.png)
 
 ---
 
