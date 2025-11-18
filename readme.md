@@ -105,8 +105,8 @@ Los siguientes *requests* confirman la funcionalidad del CRUD:
 
 | Operación | Método | URL | Código de Estado Esperado | Demostración |
 | :--- | :--- | :--- | :--- | :--- |
-| **Crear** | `POST` | `/api/products/` | `201 Created` | ![POST Request](./docs/images/06-thunder-post.png) |
-| **Listar** | `GET` | `/api/products/` | `200 OK` | ![GET List Request](./docs/images/07-thunder-get-list.png) |
-| **Detalle** | `GET` | `/api/products/{id}/` | `200 OK` | ![GET Detail Request](./docs/images/08-thunder-get-detail.png) |
-| **Actualizar** | `PATCH` | `/api/products/{id}/` | `200 OK` | ![PATCH Request](./docs/images/09-thunder-patch.png) |
-| **Eliminar** | `DELETE` | `/api/products/{id}/` | `204 No Content` | ![DELETE Request](./docs/images/10-thunder-delete.png) |
+| **Crear** | `POST` | `/api/products/` | `201 Created` | ![POST Request](./docs/post.png) |
+| **Listar** | `GET` | `/api/products/` | `200 OK` | ![GET List Request](./docs/get1.png) |
+| **Detalle** | `GET` | `/api/products/{id}/` | `200 OK` | ![GET Detail Request](./docs/get2.png) |
+| **Actualizar** | `PATCH` | `/api/products/{id}/` | `200 OK` | ![PATCH Request](./docs/put.png) |
+| **Eliminar** | `DELETE` | `/api/products/{id}/` | `204 No Content` | ![DELETE Request](./docs/delete.png) |
