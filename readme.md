@@ -33,19 +33,7 @@ La configuración se enfocó en superar desafíos comunes al usar Django con Mar
 
 * **Configuración de Conexión:** Se usa la conexión TCP/IP estándar.
 
-    ```python
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'api-db',
-            'USER': 'root',
-            'PASSWORD': '',
-            'HOST': '127.0.0.1', # Conexión TCP/IP
-            'PORT': '3306',
-        }
-    }
-    ```
-    ![Configuración de la Base de Datos](./docs/images/02-db-settings.png)
+    ![Configuración de la Base de Datos](./docs/databases.png)
 
 ---
 
